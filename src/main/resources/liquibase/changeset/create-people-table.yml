@@ -1,0 +1,54 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-people
+      author: Kseniya
+      changes:
+        - createTable:
+            tableName: people
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: full_name
+                  type: varchar(100)
+              - column:
+                  name: rating
+                  type: integer
+              - column:
+                  name: account_number
+                  type: varchar(100)
+              - column:
+                  name: authorization_id
+                  type: bigint
+              - column:
+                  name: salary_id
+                  type: bigint
+  - changeSet:
+      id: create-fk_people_authorization_id
+      author: Kseniya
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: authorization_id
+            baseTableName: people
+            constraintName: fk_people_authorization_id
+            deferrable: true
+            initiallyDeferred: true
+            referencedColumnNames: id
+            referencedTableName: authorizations
+  - changeSet:
+      id: create-fk_salaries_people_id
+      author: Kseniya
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: salary_id
+            baseTableName: people
+            constraintName: fk_salaries_people_id
+            deferrable: true
+            initiallyDeferred: true
+            referencedColumnNames: id
+            referencedTableName: salaries

@@ -1,0 +1,42 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-lessons
+      author: Kseniya
+      changes:
+        - createTable:
+            tableName: lessons
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: program_id
+                  type: bigint
+              - column:
+                  name: topic
+                  type: varchar(100)
+              - column:
+                  name: description
+                  type: varchar(256)
+              - column:
+                  name: start_date_and_time
+                  type: datetime
+              - column:
+                  name: cost
+                  type: currency
+  - changeSet:
+      id: create-fk_lessons_program_id
+      author: Kseniya
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: program_id
+            baseTableName: lessons
+            constraintName: fk_lessons_program_id
+            deferrable: true
+            initiallyDeferred: true
+            referencedColumnNames: id
+            referencedTableName: programs

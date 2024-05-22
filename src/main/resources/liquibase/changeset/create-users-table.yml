@@ -1,0 +1,69 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-users
+      author: Kseniya
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: full_name
+                  type: varchar(100)
+              - column:
+                  name: rating
+                  type: integer
+              - column:
+                  name: account_number
+                  type: varchar(100)
+              - column:
+                  name: role_id
+                  type: bigint
+              - column:
+                  name: authorization_id
+                  type: bigint
+              - column:
+                  name: salary_id
+                  type: bigint
+  - changeSet:
+      id: create-fk_users_roles_id
+      author: Kseniya
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: role_id
+            baseTableName: users
+            constraintName: fk_users_roles_id
+            deferrable: true
+            initiallyDeferred: true
+            referencedColumnNames: id
+            referencedTableName: roles
+  - changeSet:
+      id: create-fk_programs_authorization_id
+      author: Kseniya
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: authorization_id
+            baseTableName: users
+            constraintName: fk_programs_authorization_id
+            deferrable: true
+            initiallyDeferred: true
+            referencedColumnNames: id
+            referencedTableName: authorizations
+  - changeSet:
+      id: create-fk_salaries_user_id
+      author: Kseniya
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: salary_id
+            baseTableName: users
+            constraintName: fk_salaries_user_id
+            deferrable: true
+            initiallyDeferred: true
+            referencedColumnNames: id
+            referencedTableName: salaries

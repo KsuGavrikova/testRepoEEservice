@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-topics
+      author: Kseniya
+      changes:
+        - createTable:
+            tableName: topics
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(256)
+              - column:
+                  name: parent_id
+                  type: bigint

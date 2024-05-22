@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-authorizations
+      author: Kseniya
+      changes:
+        - createTable:
+            tableName: authorizations
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: login
+                  type: varchar(255)
+              - column:
+                  name: password
+                  type: varchar(255)
+              - column:
+                  name: role
+                  type: varchar(50)

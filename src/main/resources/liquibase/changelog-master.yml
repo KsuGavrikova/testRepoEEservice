@@ -1,0 +1,36 @@
+databaseChangeLog:
+#      - include:
+#          file: liquibase/changeset/drop-tables.yml
+  - include:
+      file: liquibase/changeset/create-salaries-table.yml
+  - include:
+      file: liquibase/changeset/create-authorizations-table.yml
+  - include:
+      file: liquibase/changeset/create-topics-table.yml
+  - include:
+      file: liquibase/changeset/create-people-table.yml
+  - include:
+      file: liquibase/changeset/create-programs-table.yml
+  - include:
+      file: liquibase/changeset/create-lessons-table.yml
+  - include:
+      file: liquibase/changeset/create-subscriptions-table.yml
+  - include:
+      file: liquibase/changeset/create-reviews-table.yml
+
+  - include:
+      file: liquibase/changeset/inserts/insert-salaries-table.yml
+  - include:
+      file: liquibase/changeset/inserts/insert-authorizations-table.yml
+  - include:
+      file: liquibase/changeset/inserts/insert-topics-table.yml
+  - include:
+      file: liquibase/changeset/inserts/insert-people-table.yml
+  - include:
+      file: liquibase/changeset/inserts/insert-programs-table.yml
+  - include:
+      file: liquibase/changeset/inserts/insert-lessons-table.yml
+  - include:
+      file: liquibase/changeset/inserts/insert-subscriptions-table.yml
+  - include:
+      file: liquibase/changeset/inserts/insert-reviews-table.yml

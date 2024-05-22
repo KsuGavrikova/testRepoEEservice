@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-salaries
+      author: Kseniya
+      changes:
+        - createTable:
+            tableName: salaries
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: is_fixed
+                  type: boolean
+#                  defaultNullValue: false
+              - column:
+                  name: amount
+                  type: currency

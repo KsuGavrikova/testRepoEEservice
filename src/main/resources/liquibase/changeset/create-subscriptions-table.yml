@@ -1,0 +1,51 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-subscriptions
+      author: Kseniya
+      changes:
+        - createTable:
+            tableName: subscriptions
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: people_id
+                  type: bigint
+              - column:
+                  name: program_id
+                  type: bigint
+              - column:
+                  name: start_date
+                  type: date
+              - column:
+                  name: end_date
+                  type: date
+  - changeSet:
+      id: create-fk_subscriptions_program_id
+      author: Kseniya
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: program_id
+            baseTableName: subscriptions
+            constraintName: fk_subscriptions_program_id
+            deferrable: true
+            initiallyDeferred: true
+            referencedColumnNames: id
+            referencedTableName: programs
+  - changeSet:
+      id: create-fk_subscriptions_people_id
+      author: Kseniya
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: people_id
+            baseTableName: subscriptions
+            constraintName: fk_subscriptions_people_id
+            deferrable: true
+            initiallyDeferred: true
+            referencedColumnNames: id
+            referencedTableName: people

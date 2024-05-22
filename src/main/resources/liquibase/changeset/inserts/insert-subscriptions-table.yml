@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-subscriptions
+      author: Kseniya
+      changes:
+        - insert:
+            tableName: subscriptions
+            columns:
+              - column:
+                  name: id
+                  value: 201
+              - column:
+                  name: people_id
+                  value: 302
+              - column:
+                  name: program_id
+                  value: 701
+              - column:
+                  name: start_date
+                  value: 2024-10-03
+              - column:
+                  name: end_date
+                  value: 2024-20-03

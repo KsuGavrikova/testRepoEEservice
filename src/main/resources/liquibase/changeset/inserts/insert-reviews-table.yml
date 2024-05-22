@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-reviews
+      author: Kseniya
+      changes:
+        - insert:
+            tableName: reviews
+            columns:
+              - column:
+                  name: id
+                  value: 601
+              - column:
+                  name: feedback
+                  value: true
+              - column:
+                  name: program_id
+                  value: 701
+              - column:
+                  name: people_id
+                  value: 302
+              - column:
+                  name: text
+                  value: 'very good program'

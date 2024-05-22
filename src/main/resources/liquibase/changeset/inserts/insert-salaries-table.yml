@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-salaries
+      author: Kseniya
+      changes:
+        - insert:
+            tableName: salaries
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: is_fixed
+                  value: true
+              - column:
+                  name: amount
+                  value: 123
+        - insert:
+            tableName: salaries
+            columns:
+              - column:
+                  name: id
+                  value: 2
+              - column:
+                  name: is_fixed
+                  value: false
+              - column:
+                  name: amount
+                  value: 456

@@ -1,0 +1,56 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-programs
+      author: Kseniya
+      changes:
+        - createTable:
+            tableName: programs
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(100)
+              - column:
+                  name: is_individual
+                  type: boolean
+                  defaultValue: false
+              - column:
+                  name: is_visibility
+                  type: boolean
+                  defaultValue: false
+              - column:
+                  name: author_id
+                  type: bigint
+              - column:
+                  name: topic_id
+                  type: bigint
+  - changeSet:
+      id: create-fk_programs_author_id
+      author: Kseniya
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: author_id
+            baseTableName: programs
+            constraintName: fk_programs_author_id
+            deferrable: true
+            initiallyDeferred: true
+            referencedColumnNames: id
+            referencedTableName: people
+  - changeSet:
+      id: create-fk_programs_topic_id
+      author: Kseniya
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: topic_id
+            baseTableName: programs
+            constraintName: fk_programs_topic_id
+            deferrable: true
+            initiallyDeferred: true
+            referencedColumnNames: id
+            referencedTableName: topics

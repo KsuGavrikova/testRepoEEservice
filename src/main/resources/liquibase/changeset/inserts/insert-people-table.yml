@@ -1,0 +1,47 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-people
+      author: Kseniya
+      changes:
+        - insert:
+            tableName: people
+            columns:
+              - column:
+                  name: id
+                  value: 301
+              - column:
+                  name: full_name
+                  value: 'Rozhkova Elizabet'
+              - column:
+                  name: rating
+                  value: 5
+              - column:
+                  name: account_number
+                  value: 3456-2345-9876
+              - column:
+                  name: authorization_id
+                  value: 101
+              - column:
+                  name: salary_id
+                  value: 1
+        - insert:
+            tableName: people
+            columns:
+              - column:
+                  name: id
+                  value: 302
+              - column:
+                  name: full_name
+                  value: 'Sirush Angelina'
+              - column:
+                  name: rating
+                  value: 1
+              - column:
+                  name: account_number
+                  value: 7777-7777-7777
+              - column:
+                  name: authorization_id
+                  value: 102
+              - column:
+                  name: salary_id
+                  value: 1

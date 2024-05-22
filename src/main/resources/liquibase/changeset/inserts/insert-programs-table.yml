@@ -1,0 +1,47 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-programs
+      author: Kseniya
+      changes:
+        - insert:
+            tableName: programs
+            columns:
+              - column:
+                  name: id
+                  value: 701
+              - column:
+                  name: name
+                  value: 'Intermediate English'
+              - column:
+                  name: is_individual
+                  value: false
+              - column:
+                  name: is_visibility
+                  value: true
+              - column:
+                  name: author_id
+                  value: 301
+              - column:
+                  name: topic_id
+                  value: 502
+        - insert:
+            tableName: programs
+            columns:
+              - column:
+                  name: id
+                  value: 702
+              - column:
+                  name: name
+                  value: 'Java Core'
+              - column:
+                  name: is_individual
+                  value: false
+              - column:
+                  name: is_visibility
+                  value: true
+              - column:
+                  name: author_id
+                  value: 301
+              - column:
+                  name: topic_id
+                  value: 501

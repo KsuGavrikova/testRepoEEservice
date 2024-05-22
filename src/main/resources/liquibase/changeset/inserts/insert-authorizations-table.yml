@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-authorizations
+      author: Kseniya
+      changes:
+        - insert:
+            tableName: authorizations
+            columns:
+              - column:
+                  name: id
+                  value: 101
+              - column:
+                  name: login
+                  value: 'lisa'
+              - column:
+                  name: password
+                  value: 'e9097b16-be2e-4b40-92fe-213479b698ed'
+              - column:
+                  name: role
+                  value: 'ROLE_ADMIN'
+        - insert:
+            tableName: authorizations
+            columns:
+              - column:
+                  name: id
+                  value: 102
+              - column:
+                  name: login
+                  value: 'angel'
+              - column:
+                  name: password
+                  value: 'e0b5c06b-632c-4143-98a1-60f4328ea249'
+              - column:
+                  name: role
+                  value: 'ROLE_USER'

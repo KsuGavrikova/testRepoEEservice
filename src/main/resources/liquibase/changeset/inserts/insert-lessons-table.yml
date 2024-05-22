@@ -1,0 +1,89 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-lessons
+      author: Kseniya
+      changes:
+        - insert:
+            tableName: lessons
+            columns:
+              - column:
+                  name: id
+                  value: 901
+              - column:
+                  name: program_id
+                  value: 701
+              - column:
+                  name: topic
+                  value: 'Topic 1'
+              - column:
+                  name: description
+                  value: 'a lot of words a lot of words a lot of words  a lot of words  a lot of words'
+              - column:
+                  name: start_date_and_time
+                  value: 2024-13-03 10:00:00
+              - column:
+                  name: cost
+                  value: 0
+        - insert:
+            tableName: lessons
+            columns:
+              - column:
+                  name: id
+                  value: 902
+              - column:
+                  name: program_id
+                  value: 701
+              - column:
+                  name: topic
+                  value: 'Topic 2'
+              - column:
+                  name: description
+                  value: 'a lot of words a lot of words a lot of words  a lot of words  a lot of words'
+              - column:
+                  name: start_date_and_time
+                  value: 2024-16-03 10:00:00
+              - column:
+                  name: cost
+                  value: 0
+        - insert:
+            tableName: lessons
+            columns:
+              - column:
+                  name: id
+                  value: 903
+              - column:
+                  name: program_id
+                  value: 701
+              - column:
+                  name: topic
+                  value: 'Topic 3'
+              - column:
+                  name: description
+                  value: 'a lot of words a lot of words a lot of words  a lot of words  a lot of words'
+              - column:
+                  name: start_date_and_time
+                  value: 2024-18-03 10:00:00
+              - column:
+                  name: cost
+                  value: 0
+        - insert:
+            tableName: lessons
+            columns:
+              - column:
+                  name: id
+                  value: 904
+              - column:
+                  name: program_id
+                  value: 702
+              - column:
+                  name: topic
+                  value: 'Topic 1'
+              - column:
+                  name: description
+                  value: 'a lot of words a lot of words a lot of words  a lot of words  a lot of words'
+              - column:
+                  name: start_date_and_time
+                  value: 2024-20-03 10:00:00
+              - column:
+                  name: cost
+                  value: 0

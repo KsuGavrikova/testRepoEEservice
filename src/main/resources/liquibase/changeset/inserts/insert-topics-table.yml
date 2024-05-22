@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-topics
+      author: Kseniya
+      changes:
+        - insert:
+            tableName: topics
+            columns:
+              - column:
+                  name: id
+                  value: 501
+              - column:
+                  name: name
+                  value: development
+              - column:
+                  name: parent_id
+                  value: null
+        - insert:
+            tableName: topics
+            columns:
+              - column:
+                  name: id
+                  value: 502
+              - column:
+                  name: name
+                  value: english
+              - column:
+                  name: parent_id
+                  value: null
