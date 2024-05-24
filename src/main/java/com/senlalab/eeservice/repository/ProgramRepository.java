@@ -5,9 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ProgramRepository extends JpaRepository<Program, Long> {
-    //TODO перевести все репы на Optional
-    List<Program> findAllByTopicId(Long topicId);
+    Optional<List<Program>> findAllByTopicId(Long topicId);
 }

@@ -14,6 +14,6 @@ public class ProgramDto {
     private Long authorId;
 
     private Long topicId;
-//todo убрать?
+
 //    private List<LessonDto> lessons;
 }

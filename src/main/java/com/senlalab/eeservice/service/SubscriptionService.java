@@ -1,5 +1,6 @@
 package com.senlalab.eeservice.service;
 
+import com.senlalab.eeservice.dto.ScheduleDto;
 import com.senlalab.eeservice.dto.SubscribeDto;
 
 import java.util.List;
@@ -29,4 +30,11 @@ public interface SubscriptionService {
      * @return список подписок
      */
     List<SubscribeDto> getAllByPersonId(Long personId);
+    /**
+     * Возвращает расписание для конкретного пользователя
+     *
+     * @param personId - ID пользователя
+     * @return расписание
+     */
+    List<ScheduleDto> getSchedule(Long personId);
 }

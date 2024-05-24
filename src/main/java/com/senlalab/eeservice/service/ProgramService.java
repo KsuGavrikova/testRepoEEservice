@@ -2,7 +2,6 @@ package com.senlalab.eeservice.service;
 
 import com.senlalab.eeservice.dto.DirectoryDto;
 import com.senlalab.eeservice.dto.ProgramDto;
-import com.senlalab.eeservice.model.Program;
 import com.senlalab.eeservice.model.Topic;
 
 import java.util.List;
@@ -25,7 +24,7 @@ public interface ProgramService {
      * @param topic - раздел курса
      * @return список элементов справоченика
      */
-    List<DirectoryDto> getAllForList(Topic topic);
+    List<DirectoryDto> getList(Topic topic);
 
     /**
      * Возвращает список названий всех курсов по разделу
@@ -33,7 +32,7 @@ public interface ProgramService {
      * @param topicId - ID раздела
      * @return - объект клиента с заданным ID
      */
-    List<DirectoryDto> findAllByTopicId(Long topicId);
+    List<DirectoryDto> getListByTopicId(Long topicId);
 
     /**
      * Возвращает курс по его ID

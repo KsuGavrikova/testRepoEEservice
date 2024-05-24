@@ -20,14 +20,14 @@ public class SubscriptionController {
     private final SubscriptionService subscriptionService;
 
     @PostMapping
-    public ResponseEntity<?> subscribe(@RequestBody SubscribeDto subscribeDto) {
+    public ResponseEntity<SubscribeDto> create(@RequestBody SubscribeDto subscribeDto) {
         subscriptionService.create(subscribeDto);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return ResponseEntity.status(HttpStatus.CREATED).body(subscribeDto);
     }
 
     @GetMapping
-    public ResponseEntity<List<SubscribeDto>> subscribe() {
-        return new ResponseEntity<>(subscriptionService.getAll(), HttpStatus.OK);
+    public ResponseEntity<List<SubscribeDto>> readAll() {
+        return ResponseEntity.ok(subscriptionService.getAll());
 
     }
 }

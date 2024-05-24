@@ -3,7 +3,6 @@ package com.senlalab.eeservice.controller;
 import com.senlalab.eeservice.dto.PersonDto;
 import com.senlalab.eeservice.service.PersonService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,14 +22,14 @@ public class PersonController {
 
     @GetMapping
     public ResponseEntity<List<PersonDto>> getPerson() {
-        return new ResponseEntity<>(personService.getAll(), HttpStatus.OK);
+        return ResponseEntity.ok(personService.getAll());
     }
 
     @PostMapping("/{person_id}")
-    public ResponseEntity<?> updatePerson(@PathVariable(name = "person_id") Long id,
-                                          @RequestBody PersonDto personDto) {
+    public ResponseEntity<PersonDto> updatePerson(@PathVariable(name = "person_id") Long id,
+                                                  @RequestBody PersonDto personDto) {
         personService.update(personDto, id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return ResponseEntity.ok(personDto);
     }
 
 }

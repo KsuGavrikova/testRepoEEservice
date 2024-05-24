@@ -21,13 +21,13 @@ public class SalaryController {
 
     @GetMapping
     public ResponseEntity<List<SalaryDto>> read() {
-        return new ResponseEntity<>(salaryService.getAll(), HttpStatus.OK);
+        return ResponseEntity.ok(salaryService.getAll());
     }
 
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody SalaryDto salaryDto) {
+    public ResponseEntity<SalaryDto> create(@RequestBody SalaryDto salaryDto) {
         salaryService.create(salaryDto);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return ResponseEntity.status(HttpStatus.CREATED).body(salaryDto);
     }
 
 }

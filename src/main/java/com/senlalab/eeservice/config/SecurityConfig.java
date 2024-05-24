@@ -44,7 +44,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers(  "/swagger-ui/**").permitAll()
+//                        .requestMatchers("/swagger-ui/**").permitAll()
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers("/directory/programs/**")
                         .hasAnyRole("ADMIN", "USER")
@@ -90,12 +90,5 @@ public class SecurityConfig {
                         addList("Bearer Authentication"))
                 .components(new Components().addSecuritySchemes
                         ("Bearer Authentication", createAPIKeyScheme()));
-//                .info(new Info().title("My REST API")
-//                        .description("Some custom description of API.")
-//                        .version("1.0").contact(new Contact().name("Sallo Szrajbman")
-//                                .email( "www.baeldung.com").url("salloszraj@gmail.com"))
-//                        .license(new License().name("License of API")
-//                                .url("API license URL"))
-//                                );
     }
 }

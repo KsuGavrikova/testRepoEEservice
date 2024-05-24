@@ -27,15 +27,17 @@ public class ProgramServiceImpl implements ProgramService {
         return programRepository.findAll();
     }
 
-    public List<DirectoryDto> getAllForList(Topic topic) {
+    @Override
+    public List<DirectoryDto> getList(Topic topic) {
         return programMapper.entityListToDto(programRepository.findAll().stream()
                 .filter(x -> x.getTopic().equals(topic))
                 .toList());
     }
 
     @Override
-    public List<DirectoryDto> findAllByTopicId(Long topicId) {
-        return programMapper.entityListToDto(programRepository.findAllByTopicId(topicId));
+    public List<DirectoryDto> getListByTopicId(Long topicId) {
+        return programMapper.entityListToDto(programRepository.findAllByTopicId(topicId)
+                .orElseThrow(() -> new EntryNotFoundException("Program with " + topicId + " not found")));
     }
 
 

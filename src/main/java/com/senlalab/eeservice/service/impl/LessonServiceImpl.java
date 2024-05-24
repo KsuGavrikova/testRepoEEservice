@@ -30,7 +30,7 @@ public class LessonServiceImpl implements LessonService {
         try {
             lessonRepository.save(lessonMapper.dtoToEntity(lessonDto));
             log.info("Lesson saved {}", lessonDto);
-        } catch (MyRepoException e) {//todo будет когда-либо вызван
+        } catch (MyRepoException e) {
             log.error("Error during save lesson {}", lessonDto, e);
         }
     }
@@ -57,7 +57,8 @@ public class LessonServiceImpl implements LessonService {
 
     @Override
     public List<LessonDto> getAllByProgramId(Long programId) {
-        return lessonMapper.entityListToDTO(lessonRepository.findAllByProgramId(programId));
+        return lessonMapper.entityListToDTO(lessonRepository.findAllByProgramId(programId)
+                .orElseThrow(() -> new EntryNotFoundException("Program", programId)));
     }
 
 }

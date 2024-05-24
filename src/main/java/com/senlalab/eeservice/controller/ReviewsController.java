@@ -20,14 +20,14 @@ public class ReviewsController {
     private final ReviewService reviewService;
 
     @PostMapping
-    public ResponseEntity<?> reviews(@RequestBody ReviewDto reviewDto) {
+    public ResponseEntity<ReviewDto> create(@RequestBody ReviewDto reviewDto) {
         reviewService.create(reviewDto);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return ResponseEntity.status(HttpStatus.CREATED).body(reviewDto);
     }
 
     @GetMapping
-    public ResponseEntity<List<ReviewDto>> reviews() {
-        return new ResponseEntity<>(reviewService.getAll(), HttpStatus.OK);
+    public ResponseEntity<List<ReviewDto>> readAll() {
+        return ResponseEntity.ok(reviewService.getAll());
 
     }
 }

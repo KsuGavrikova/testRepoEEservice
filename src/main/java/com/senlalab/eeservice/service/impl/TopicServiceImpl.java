@@ -32,10 +32,11 @@ public class TopicServiceImpl implements TopicService {
     }
 
     public List<DirectoryDto> getRoot() {
-        List<DirectoryDto> rootTopics = topicMapper.entityListToDto(topicRepository.findAll().stream()
-                .filter(x -> x.getParentId() == null)
-                .toList());
-        return rootTopics;
+        return topicMapper.entityListToDto(
+                topicRepository.findAll()
+                        .stream()
+                        .filter(x -> x.getParentId() == null)
+                        .toList());
     }
 
     public List<DirectoryDto> getSubordinates(Long parentId) {
@@ -47,7 +48,8 @@ public class TopicServiceImpl implements TopicService {
     }
 
     public Topic getById(Long topicId) {
-        return topicRepository.findById(topicId).orElseThrow(() -> new EntryNotFoundException("Topic", topicId));
+        return topicRepository.findById(topicId)
+                .orElseThrow(() -> new EntryNotFoundException("Topic", topicId));
     }
 
     public boolean update(TopicDto topicDto, Long id) {
@@ -64,16 +66,8 @@ public class TopicServiceImpl implements TopicService {
 
     public void delete(Long id) {
         Topic topic = topicRepository.findById(id)
-                .orElseThrow(() -> new EntryNotFoundException("Topic ",  id));
+                .orElseThrow(() -> new EntryNotFoundException("Topic ", id));
         topicRepository.delete(topic);
-//        if (topicRepository.findById(id).isPresent()) {
-//            topicRepository.deleteById(id);//todo нужна repo exception (? как в ProgramService )
-//            resetParent(id);
-//            log.info("Topic with id " + id + " was delete");
-//            return true;
-//        }
-//        log.warn("Topic with id " + id + " no delete");
-//        throw new EntryNotFoundException("Topic", id);
     }
 
     private void resetParent(Long id) {

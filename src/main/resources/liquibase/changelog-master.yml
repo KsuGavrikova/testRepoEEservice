@@ -1,6 +1,6 @@
 databaseChangeLog:
-#      - include:
-#          file: liquibase/changeset/drop-tables.yml
+#  - include:
+#      file: liquibase/changeset/drop-tables.yml
   - include:
       file: liquibase/changeset/create-salaries-table.yml
   - include:

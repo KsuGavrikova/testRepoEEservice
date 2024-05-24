@@ -22,26 +22,26 @@ public class LessonController {
     private final LessonService lessonService;
 
     @GetMapping
-    public ResponseEntity<List<LessonDto>> read() {
-        return new ResponseEntity<>(lessonService.getAll(), HttpStatus.OK);
+    public ResponseEntity<List<LessonDto>> readAll() {
+        return ResponseEntity.ok(lessonService.getAll());
     }
 
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody LessonDto lessonDto) {
+    public ResponseEntity<LessonDto> create(@RequestBody LessonDto lessonDto) {
         lessonService.create(lessonDto);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return ResponseEntity.status(HttpStatus.CREATED).body(lessonDto);
     }
 
     @PostMapping("/{lesson_id}")
-    public ResponseEntity<?> update(@PathVariable(name = "lesson_id") Long id, @RequestBody LessonDto lessonDto) {
+    public ResponseEntity<LessonDto> update(@PathVariable(name = "lesson_id") Long id, @RequestBody LessonDto lessonDto) {
         lessonService.update(lessonDto, id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return ResponseEntity.ok(lessonDto);
     }
 
     @DeleteMapping("/{lesson_id}")
-    public ResponseEntity<?> delete(@PathVariable("lesson_id") Long id) {
+    public ResponseEntity<Void> delete(@PathVariable("lesson_id") Long id) {
         lessonService.delete(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return ResponseEntity.noContent().build();
     }
 
 }

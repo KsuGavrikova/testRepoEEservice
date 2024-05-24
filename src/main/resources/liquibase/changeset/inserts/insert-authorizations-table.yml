@@ -14,7 +14,7 @@ databaseChangeLog:
                   value: 'lisa'
               - column:
                   name: password
-                  value: 'e9097b16-be2e-4b40-92fe-213479b698ed'
+                  value: '$2a$12$sOjtRkh.5tqZQ4q8tPdaxeIX/oIlclCeUkj9oVUmFh.6dX24/qc2m'
               - column:
                   name: role
                   value: 'ROLE_ADMIN'
@@ -29,7 +29,7 @@ databaseChangeLog:
                   value: 'angel'
               - column:
                   name: password
-                  value: 'e0b5c06b-632c-4143-98a1-60f4328ea249'
+                  value: '$2a$12$G.CZ9zu1Ni7kIIWWGvRhPuWJOItJAW9SJtAZ7YYnDw/BL/SsxxEE.'
               - column:
                   name: role
                   value: 'ROLE_USER'
