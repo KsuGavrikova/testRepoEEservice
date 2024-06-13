@@ -1,7 +1,7 @@
 package com.senlalab.eeservice.mapper;
 
 import com.senlalab.eeservice.dto.PersonDto;
-import com.senlalab.eeservice.dto.SignUpRequest;
+import com.senlalab.eeservice.dto.request.SignUpRequest;
 import com.senlalab.eeservice.model.Person;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValueCheckStrategy;
@@ -11,7 +11,7 @@ import java.util.List;
 
 @Mapper(nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS,
         nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
-        componentModel = "spring",  uses = {SalaryMapper.class})
+        componentModel = "spring", uses = {SalaryMapper.class})
 public interface PersonMapper {
 
     PersonDto entityToDto(Person entity);

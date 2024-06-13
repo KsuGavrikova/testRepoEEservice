@@ -9,6 +9,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "programs")
 public class Program extends BaseEntity {
@@ -30,6 +31,4 @@ public class Program extends BaseEntity {
     @JoinColumn(name = "topic_id")
     private Topic topic;
 
-//    @OneToMany(mappedBy = "program", fetch = FetchType.LAZY)
-//    private List<Lesson> lessons;
 }

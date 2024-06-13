@@ -1,5 +1,6 @@
 package com.senlalab.eeservice.config;
 
+import com.senlalab.eeservice.security.JwtAuthenticationFilter;
 import com.senlalab.eeservice.security.UserService;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -44,7 +45,6 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request -> request
-//                        .requestMatchers("/swagger-ui/**").permitAll()
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers("/directory/programs/**")
                         .hasAnyRole("ADMIN", "USER")

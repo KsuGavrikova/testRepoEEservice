@@ -1,6 +1,6 @@
 package com.senlalab.eeservice.service;
 
-import com.senlalab.eeservice.model.Lesson;
+import com.senlalab.eeservice.dto.LessonDto;
 import com.senlalab.eeservice.service.impl.LessonServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -16,7 +16,7 @@ public class ClassServiceTest {
 
     @Test
     public void getAllClasses() {
-        List<Lesson> classList = classService.getAll();
+        List<LessonDto> classList = classService.getAllLessons();
         Assertions.assertEquals(classList.size(), 4);
         System.out.println();
         classList.forEach(System.out::println);

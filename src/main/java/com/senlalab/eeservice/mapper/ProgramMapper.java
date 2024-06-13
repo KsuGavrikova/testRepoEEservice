@@ -1,7 +1,8 @@
 package com.senlalab.eeservice.mapper;
 
-import com.senlalab.eeservice.dto.DirectoryDto;
+import com.senlalab.eeservice.dto.response.DirectoryDto;
 import com.senlalab.eeservice.dto.ProgramDto;
+import com.senlalab.eeservice.dto.ProgramDtoToUpdate;
 import com.senlalab.eeservice.model.Program;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -23,6 +24,10 @@ public interface ProgramMapper {
     @Mapping(source = "authorId", target = "author")
     @Mapping(source = "topicId", target = "topic")
     Program dtoToEntity(ProgramDto dto);
+
+    @Mapping(source = "authorId", target = "author")
+    @Mapping(source = "topicId", target = "topic")
+    Program dtoToEntity(ProgramDtoToUpdate dto);
 
     List<DirectoryDto> entityListToDto(List<Program> entities);
 

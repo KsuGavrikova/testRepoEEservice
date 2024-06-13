@@ -14,14 +14,14 @@ public interface SubscriptionService {
      *
      * @return список подписок
      */
-    List<SubscribeDto> getAll();
+    List<SubscribeDto> getAllSubscriptions();
 
     /**
      * Создает новую подписку
      *
      * @param subscribeDto - создаваемая подписка
      */
-    void create(SubscribeDto subscribeDto);
+    void createSubscription(SubscribeDto subscribeDto);
 
     /**
      * Возвращает список подписок для конкретного пользователя

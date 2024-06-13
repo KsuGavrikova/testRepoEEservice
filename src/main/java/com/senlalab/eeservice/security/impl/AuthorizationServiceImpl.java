@@ -1,8 +1,8 @@
 package com.senlalab.eeservice.security.impl;
 
 import com.senlalab.eeservice.dto.JwtAuthenticationResponse;
-import com.senlalab.eeservice.dto.SignInRequest;
-import com.senlalab.eeservice.dto.SignUpRequest;
+import com.senlalab.eeservice.dto.request.SignInRequest;
+import com.senlalab.eeservice.dto.request.SignUpRequest;
 import com.senlalab.eeservice.exception.EntryNotFoundException;
 import com.senlalab.eeservice.mapper.PersonMapper;
 import com.senlalab.eeservice.model.Authorization;
@@ -12,6 +12,7 @@ import com.senlalab.eeservice.repository.PersonRepository;
 import com.senlalab.eeservice.security.AuthenticationService;
 import com.senlalab.eeservice.security.JwtService;
 import com.senlalab.eeservice.security.UserSecurity;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -49,10 +50,8 @@ public class AuthorizationServiceImpl implements AuthenticationService {
 
     @Override
     public JwtAuthenticationResponse signin(SignInRequest request) {
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
-        var user = authorizationRepository.findByLogin(request.getEmail())
-                .orElseThrow(() -> new IllegalArgumentException("Invalid email or password."));
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+        var user = authorizationRepository.findByLogin(request.getEmail()).orElseThrow(() -> new IllegalArgumentException("Invalid email or password."));
         var jwt = jwtService.generateToken(new UserSecurity(user));
         return JwtAuthenticationResponse.builder().token(jwt).build();
     }

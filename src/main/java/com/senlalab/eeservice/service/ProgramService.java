@@ -1,8 +1,8 @@
 package com.senlalab.eeservice.service;
 
-import com.senlalab.eeservice.dto.DirectoryDto;
+import com.senlalab.eeservice.dto.response.DirectoryDto;
 import com.senlalab.eeservice.dto.ProgramDto;
-import com.senlalab.eeservice.model.Topic;
+import com.senlalab.eeservice.dto.ProgramDtoToUpdate;
 
 import java.util.List;
 
@@ -16,15 +16,14 @@ public interface ProgramService {
      *
      * @param programDto - создаваемый курс
      */
-    void create(ProgramDto programDto);
+    void createProgram(ProgramDtoToUpdate programDto);
 
     /**
      * Возвращает список всех курсов в разделе
      *
-     * @param topic - раздел курса
      * @return список элементов справоченика
      */
-    List<DirectoryDto> getList(Topic topic);
+    List<DirectoryDto> getVisibilityProgram();
 
     /**
      * Возвращает список названий всех курсов по разделу
@@ -32,7 +31,7 @@ public interface ProgramService {
      * @param topicId - ID раздела
      * @return - объект клиента с заданным ID
      */
-    List<DirectoryDto> getListByTopicId(Long topicId);
+    List<DirectoryDto> getAllProgramByTopic(Long topicId);
 
     /**
      * Возвращает курс по его ID
@@ -40,7 +39,7 @@ public interface ProgramService {
      * @param id - ID курса
      * @return - объект клиента с заданным ID
      */
-    ProgramDto getById(Long id);
+    ProgramDto getProgramById(Long id);
 
     /**
      * Обновляет курс с заданным ID,
@@ -50,7 +49,7 @@ public interface ProgramService {
      * @param id         - id курса которого нужно обновить
      * @return - true если данные были обновлены, иначе false
      */
-    boolean update(ProgramDto programDto, Long id);
+    boolean updateProgram(ProgramDtoToUpdate programDto, Long id);
 
     /**
      * Удаляет курс с заданным ID
@@ -58,5 +57,7 @@ public interface ProgramService {
      * @param id - id курса, который нужно удалить
      * @return - true если раздел был удален, иначе false
      */
-    boolean delete(Long id);
+    boolean deleteProgram(Long id);
+
+    List<DirectoryDto> getIndividualProgram();
 }

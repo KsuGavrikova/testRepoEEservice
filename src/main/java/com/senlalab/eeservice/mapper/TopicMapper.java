@@ -1,6 +1,6 @@
 package com.senlalab.eeservice.mapper;
 
-import com.senlalab.eeservice.dto.DirectoryDto;
+import com.senlalab.eeservice.dto.response.DirectoryDto;
 import com.senlalab.eeservice.dto.TopicDto;
 import com.senlalab.eeservice.model.Topic;
 import org.mapstruct.Mapper;

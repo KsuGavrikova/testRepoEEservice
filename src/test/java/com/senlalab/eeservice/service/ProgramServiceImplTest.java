@@ -16,7 +16,7 @@ public class ProgramServiceImplTest {
 
     @Test
     public void getAuthorizationService() {
-        List<Program> programs = programServiceImpl.getAll();
+        List<Program> programs = programServiceImpl.getAllPrograms();
         Assertions.assertEquals(programs.size(), 2);
         System.out.println();
         programs.forEach(System.out::println);

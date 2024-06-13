@@ -13,12 +13,12 @@ public interface SalaryService {
      *
      * @return список подписок
      */
-    List<SalaryDto> getAll();
+    List<SalaryDto> getAllSalaries();
 
     /**
      * Создает новое вознаграждение
      *
      * @param salaryDto - создаваемое вознаграждение
      */
-    void create(SalaryDto salaryDto);
+    void createSalary(SalaryDto salaryDto);
 }

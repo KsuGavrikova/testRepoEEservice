@@ -1,7 +1,7 @@
 package com.senlalab.eeservice.mapper;
 
-import com.senlalab.eeservice.dto.DirectoryDto;
-import com.senlalab.eeservice.dto.SignUpRequest;
+import com.senlalab.eeservice.dto.response.DirectoryDto;
+import com.senlalab.eeservice.dto.request.SignUpRequest;
 import com.senlalab.eeservice.model.Authorization;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

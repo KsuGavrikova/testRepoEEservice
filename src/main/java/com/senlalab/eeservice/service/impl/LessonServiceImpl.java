@@ -19,44 +19,39 @@ import java.util.List;
 public class LessonServiceImpl implements LessonService {
 
     private final LessonRepository lessonRepository;
+
     private final LessonMapper lessonMapper;
 
-    public List<LessonDto> getAll() {
+    public List<LessonDto> getAllLessons() {
         return lessonMapper.entityListToDTO(lessonRepository.findAll());
     }
 
     @Override
-    public void create(LessonDto lessonDto) {
-        try {
-            lessonRepository.save(lessonMapper.dtoToEntity(lessonDto));
-            log.info("Lesson saved {}", lessonDto);
-        } catch (MyRepoException e) {
-            log.error("Error during save lesson {}", lessonDto, e);
-        }
+    public void createLesson(LessonDto lessonDto) {
+        lessonRepository.save(lessonMapper.dtoToEntity(lessonDto));
+        log.info("Lesson saved successfully: {}", lessonDto);
     }
 
     @Override
-    public boolean update(LessonDto lessonDto, Long id) {
-        if (lessonRepository.findById(id).isPresent()) {
-            Lesson newLesson = lessonMapper.dtoToEntity(lessonDto);
-            newLesson.setId(id);
-            lessonRepository.save(newLesson);
-            log.warn("Lesson " + lessonDto + " was update");
-            return true;
-        }
-        log.warn("Lesson " + lessonDto + " no update");
-        throw new EntryNotFoundException("Lesson", id);
+    public void updateLesson(LessonDto lessonDto, Long id) {
+        lessonRepository.findById(id)
+                .orElseThrow(() -> new EntryNotFoundException("Lesson", id));
+
+        Lesson newLesson = lessonMapper.dtoToEntity(lessonDto);
+        newLesson.setId(id);
+        lessonRepository.save(newLesson);
+
+        log.info("Lesson with id {} updated successfully: {}", id, lessonDto);
     }
 
     @Override
-    public boolean delete(Long id) {
-        lessonRepository.findById(id).orElseThrow(() -> new EntryNotFoundException("Lesson", id));
+    public void deleteLesson(Long id) {
         lessonRepository.deleteById(id);
-        return true;
+        log.info("Lesson with id {} deleted successfully", id);
     }
 
     @Override
-    public List<LessonDto> getAllByProgramId(Long programId) {
+    public List<LessonDto> getAllLessonsByProgramId(Long programId) {
         return lessonMapper.entityListToDTO(lessonRepository.findAllByProgramId(programId)
                 .orElseThrow(() -> new EntryNotFoundException("Program", programId)));
     }

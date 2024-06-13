@@ -20,13 +20,15 @@ public class SalaryServiceImpl implements SalaryService {
     private final SalaryMapper salaryMapper;
 
     @Override
-    public List<SalaryDto> getAll() {
-        return salaryMapper.entityListToDto(salaryRepository.findAll());
+    public List<SalaryDto> getAllSalaries() {
+        List<SalaryDto> salaries = salaryMapper.entityListToDto(salaryRepository.findAll());
+        log.info("Retrieved {} salaries", salaries.size());
+        return salaries;
     }
 
     @Override
-    public void create(SalaryDto salaryDto) {
+    public void createSalary(SalaryDto salaryDto) {
         salaryRepository.save(salaryMapper.dtoToEntity(salaryDto));
-        log.warn("Salary " + salaryDto + " was create");
+        log.info("Salary {} was created", salaryDto);
     }
 }
