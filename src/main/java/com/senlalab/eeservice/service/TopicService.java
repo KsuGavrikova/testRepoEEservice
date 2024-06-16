@@ -1,6 +1,6 @@
 package com.senlalab.eeservice.service;
 
-import com.senlalab.eeservice.dto.DirectoryDto;
+import com.senlalab.eeservice.dto.response.DirectoryDto;
 import com.senlalab.eeservice.dto.TopicDto;
 import com.senlalab.eeservice.model.Topic;
 
@@ -15,21 +15,21 @@ public interface TopicService {
      *
      * @param topicDto - создаваемый раздел
      */
-    void create(TopicDto topicDto);
+    void createTopic(TopicDto topicDto);
 
     /**
      * Возвращает список всех имеющихся разделов
      *
      * @return список элементов справоченика
      */
-    List<DirectoryDto> getAll();
+    List<DirectoryDto> getAllTopics();
 
     /**
      * Возвращает список корневых разделов
      *
      * @return список элементов справоченика
      */
-    List<DirectoryDto> getRoot();
+    List<DirectoryDto> getRootTopics();
 
     /**
      * Возвращает список подразделов передаваемого раздела
@@ -55,12 +55,12 @@ public interface TopicService {
      * @param id    - id раздела которого нужно обновить
      * @return - true если данные были обновлены, иначе false
      */
-    boolean update(TopicDto topic, Long id);
+    boolean updateTopic(TopicDto topic, Long id);
 
     /**
      * Удаляет раздел с заданным ID
      *
      * @param id - id раздела, который нужно удалить
      */
-    void delete(Long id);
+    void deleteTopic(Long id);
 }

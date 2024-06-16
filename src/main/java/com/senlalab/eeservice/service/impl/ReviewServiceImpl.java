@@ -16,16 +16,19 @@ import java.util.List;
 public class ReviewServiceImpl implements ReviewService {
 
     private final ReviewRepository reviewRepository;
+
     private final ReviewMapper reviewMapper;
 
     @Override
-    public List<ReviewDto> getAll() {
-        return reviewMapper.entityListToDto(reviewRepository.findAll());
+    public List<ReviewDto> getAllReviews() {
+        List<ReviewDto> reviews = reviewMapper.entityListToDto(reviewRepository.findAll());
+        log.info("Retrieved {} reviews", reviews.size());
+        return reviews;
     }
 
     @Override
-    public void create(ReviewDto reviewDto) {
+    public void createReview(ReviewDto reviewDto) {
         reviewRepository.save(reviewMapper.dtoToEntity(reviewDto));
-        log.warn("Review " + reviewDto + " was create");
+        log.info("Review {} was create", reviewDto);
     }
 }

@@ -14,14 +14,14 @@ public interface LessonService {
      *
      * @return список занятий
      */
-    List<LessonDto> getAll();
+    List<LessonDto> getAllLessons();
 
     /**
      * Создает занятие
      *
      * @param lessonDto - создаваемое занятие
      */
-    void create(LessonDto lessonDto);
+    void createLesson(LessonDto lessonDto);
 
     /**
      * Обновляет занятие с заданным ID,
@@ -29,17 +29,15 @@ public interface LessonService {
      *
      * @param lessonDto - занятие в соответсвии с которым нужно обновить данные
      * @param id        - id занятия, которое нужно обновить
-     * @return - true если данные были обновлены, иначе false
      */
-    boolean update(LessonDto lessonDto, Long id);
+    void updateLesson(LessonDto lessonDto, Long id);
 
     /**
      * Удаляет занятие с заданным ID
      *
      * @param id - id занятия, которое нужно удалить
-     * @return - true если занятие удалено, иначе false
      */
-    boolean delete(Long id);
+    void deleteLesson(Long id);
 
     /**
      * Возвращает список всех занятий  по программе
@@ -47,5 +45,5 @@ public interface LessonService {
      * @param programId - ID программы
      * @return список занятий
      */
-    List<LessonDto> getAllByProgramId(Long programId);
+    List<LessonDto> getAllLessonsByProgramId(Long programId);
 }

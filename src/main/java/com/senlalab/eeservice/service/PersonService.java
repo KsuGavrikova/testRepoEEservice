@@ -14,7 +14,7 @@ public interface PersonService {
      *
      * @return список пользователей
      */
-    List<PersonDto> getAll();
+    List<PersonDto> getAllPerson();
 
     /**
      * Возвращает пользователя по ID
@@ -22,7 +22,7 @@ public interface PersonService {
      * @param personId - ID пользователя
      * @return элемент справочника
      */
-    PersonDto getById(Long personId);
+    PersonDto getPersonById(Long personId);
 
     /**
      * Создает пользователя
@@ -39,5 +39,5 @@ public interface PersonService {
      * @param id        - id пользователя, которого нужно обновить
      * @return - true если данные были обновлены, иначе false
      */
-    boolean update(PersonDto personDto, Long id);
+    boolean updatePerson(PersonDto personDto, Long id);
 }

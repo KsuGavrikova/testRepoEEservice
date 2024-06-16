@@ -16,7 +16,7 @@ public class PersonServiceImplUnitTest {
 
     @Test
     public void whenApplicationStarts_thenGetUsers() {
-        List<PersonDto> persons = personServiceImpl.getAll();
+        List<PersonDto> persons = personServiceImpl.getAllPerson();
         Assertions.assertEquals(persons.size(), 2);
         System.out.println();
         persons.forEach(System.out::println);

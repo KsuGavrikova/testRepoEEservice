@@ -1,7 +1,7 @@
 package com.senlalab.eeservice.service.impl;
 
-import com.senlalab.eeservice.dto.DirectoryDto;
 import com.senlalab.eeservice.dto.TopicDto;
+import com.senlalab.eeservice.dto.response.DirectoryDto;
 import com.senlalab.eeservice.exception.EntryNotFoundException;
 import com.senlalab.eeservice.mapper.TopicMapper;
 import com.senlalab.eeservice.model.Topic;
@@ -19,25 +19,31 @@ import java.util.List;
 public class TopicServiceImpl implements TopicService {
 
     private final TopicMapper topicMapper;
+
     private final TopicRepository topicRepository;
 
-    public void create(TopicDto topicDto) {
+    @Override
+    public void createTopic(TopicDto topicDto) {
         Topic newTopic = topicMapper.dtoToEntity(topicDto);
         topicRepository.save(newTopic);
         log.warn("Topic " + topicDto + " was create");
     }
 
-    public List<DirectoryDto> getAll() {
+    @Override
+    public List<DirectoryDto> getAllTopics() {
         return topicMapper.entityListToDto(topicRepository.findAll());
     }
 
-    public List<DirectoryDto> getRoot() {
-        List<DirectoryDto> rootTopics = topicMapper.entityListToDto(topicRepository.findAll().stream()
-                .filter(x -> x.getParentId() == null)
-                .toList());
-        return rootTopics;
+    @Override
+    public List<DirectoryDto> getRootTopics() {
+        return topicMapper.entityListToDto(
+                topicRepository.findAll()
+                        .stream()
+                        .filter(x -> x.getParentId() == null)
+                        .toList());
     }
 
+    @Override
     public List<DirectoryDto> getSubordinates(Long parentId) {
         return topicMapper.entityListToDto(
                 topicRepository.findAll().stream()
@@ -46,42 +52,30 @@ public class TopicServiceImpl implements TopicService {
                         .toList());
     }
 
+    @Override
     public Topic getById(Long topicId) {
-        return topicRepository.findById(topicId).orElseThrow(() -> new EntryNotFoundException("Topic", topicId));
+        return topicRepository.findById(topicId)
+                .orElseThrow(() -> new EntryNotFoundException("Topic", topicId));
     }
 
-    public boolean update(TopicDto topicDto, Long id) {
+    @Override
+    public boolean updateTopic(TopicDto topicDto, Long id) {
         if (topicRepository.findById(id).isPresent()) {
             Topic newTopic = topicMapper.dtoToEntity(topicDto);
             newTopic.setId(id);
             topicRepository.save(newTopic);
-            log.info("Topic " + topicDto + " was update");
+            log.info("Topic {} was update", topicDto);
             return true;
         }
-        log.warn("Topic " + topicDto + " no update");
+        log.warn("Topic {} no update", topicDto);
         throw new EntryNotFoundException("Topic", id);
     }
 
-    public void delete(Long id) {
+    @Override
+    public void deleteTopic(Long id) {
         Topic topic = topicRepository.findById(id)
-                .orElseThrow(() -> new EntryNotFoundException("Topic ",  id));
+                .orElseThrow(() -> new EntryNotFoundException("Topic ", id));
         topicRepository.delete(topic);
-//        if (topicRepository.findById(id).isPresent()) {
-//            topicRepository.deleteById(id);//todo нужна repo exception (? как в ProgramService )
-//            resetParent(id);
-//            log.info("Topic with id " + id + " was delete");
-//            return true;
-//        }
-//        log.warn("Topic with id " + id + " no delete");
-//        throw new EntryNotFoundException("Topic", id);
     }
 
-    private void resetParent(Long id) {
-        for (Topic t :
-                topicRepository.findAll()) {
-            if (t.getParentId().equals(id)) {
-                t.setParentId(null);
-            }
-        }
-    }
 }

@@ -1,4 +1,4 @@
-package com.senlalab.eeservice.config;
+package com.senlalab.eeservice.security;
 
 import com.senlalab.eeservice.security.JwtService;
 import com.senlalab.eeservice.security.UserService;
@@ -35,11 +35,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         final String authHeader = request.getHeader("Authorization");
         final String jwt;
         final String login;
-        if (StringUtils.isEmpty(authHeader) || !StringUtils.startsWith(authHeader, "Bearer ")) {
+        final String prefix = "Bearer ";
+        if (StringUtils.isEmpty(authHeader) || !StringUtils.startsWith(authHeader, prefix)) {
             filterChain.doFilter(request, response);
             return;
         }
-        jwt = authHeader.substring(7);
+
+        jwt = authHeader.substring(prefix.length());
         login = jwtService.extractUserName(jwt);
         if (StringUtils.isNotEmpty(login)
                 && SecurityContextHolder.getContext().getAuthentication() == null) {

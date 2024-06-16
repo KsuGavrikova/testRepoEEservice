@@ -1,7 +1,7 @@
 package com.senlalab.eeservice.service;
 
 
-import com.senlalab.eeservice.model.Salary;
+import com.senlalab.eeservice.dto.SalaryDto;
 import com.senlalab.eeservice.service.impl.SalaryServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -17,7 +17,7 @@ public class SalaryServiceTest {
 
     @Test
     public void whenApplicationStarts_thenGetSalary() {
-        List<Salary> salaryList = salaryService.getAll();
+        List<SalaryDto> salaryList = salaryService.getAllSalaries();
         Assertions.assertEquals(salaryList.size(), 2);
         System.out.println();
         salaryList.forEach(System.out::println);

@@ -13,12 +13,12 @@ public interface ReviewService {
      *
      * @return список отзывов
      */
-    List<ReviewDto> getAll();
+    List<ReviewDto> getAllReviews();
 
     /**
      * Создает отзыв
      *
      * @param reviewDto - создаваемый отзыв
      */
-    void create(ReviewDto reviewDto);
+    void createReview(ReviewDto reviewDto);
 }
